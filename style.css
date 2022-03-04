@@ -1,16 +1,99 @@
 body {
     background: #f9e933;
 }
-header, main, footer {
-    min-width: 855px;
-}
-header .container, main .container, footer .container {
-    max-width: 855px;
-    margin: auto;
-}
 header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    justify-items: stretch;
+    align-content: center;
+    background: red;
+}
+
+header a {
+    color: black;
+}
+
+header h1 {
+    font-family: cursive;
+    font-size: 250%;
+    font-style: bold;
+    margin-left: 10%;
+}
+
+header nav {
+    position: absolute;
+    right: 35px;
+}
+
+main .main {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    justify-items: stretch;
+    align-content: center;
     background: white;
 }
-main {
-    background: white;
+
+main .main .main-text {
+    width: 50%;
+    margin-left: 10%;
+    line-height: 1.5;
+}
+
+main .main .main-img {
+    margin: 3% 10%;
+}
+
+main .main .main-img img {
+    width: 70%;
+}
+
+main .main .main-text ul {
+    padding-left: 2%;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+main .main .main-text p {
+    margin-left: 3%;
+    font-style: italic;
+    font-size: 105%;
+}
+
+main .main .main-text h2{
+    font-family: cursive;
+    font-size: 130%;
+}
+
+main .main .main-text h3{
+    font-family: fantasy;
+    font-size: 110%;
+}
+
+footer {
+    background-color: #e0e0e0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    justify-items: stretch;
+    align-content: center;
+    padding: 2% 5%;
+    background: #f9e933;
+}
+
+footer .contact {
+    float: left;
+}
+
+footer .sitemap {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-right: 5%;
+}
+
+footer .sitemap ul {
+    list-style: none;
+    columns: 2;
 }
