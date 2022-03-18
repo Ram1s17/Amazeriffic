@@ -49,6 +49,16 @@ main .tabs a span.active {
     background: #f9e933; 
 }
 
+main .container .content .inp{
+    border-radius: 10px;
+    margin: 2%;
+}
+
+main .container .content .btn{
+    border-radius: 10px;
+    background: red;
+}
+
 footer {
     background-color: #e0e0e0;
     display: flex;
