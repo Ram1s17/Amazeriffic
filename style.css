@@ -26,48 +26,13 @@ header nav {
     right: 35px;
 }
 
-main .main {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    justify-items: stretch;
-    align-content: center;
+main {
     background: white;
 }
 
-main .main .main-text {
-    width: 50%;
+main .container {
     margin-left: 10%;
-    line-height: 1.5;
-}
-
-main .main .main-img {
-    margin: 3% 10%;
-}
-
-main .main .main-img img {
-    width: 70%;
-}
-
-main .main .main-text ul {
-    padding-left: 2%;
-    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-}
-
-main .main .main-text p {
-    margin-left: 3%;
-    font-style: italic;
-    font-size: 105%;
-}
-
-main .main .main-text h2{
-    font-family: cursive;
-    font-size: 130%;
-}
-
-main .main .main-text h3{
-    font-family: fantasy;
-    font-size: 110%;
+    padding: 5% 0;
 }
 
 main .tabs a span { 
@@ -81,7 +46,7 @@ main .tabs a span {
 }
 
 main .tabs a span.active { 
-    background: #eee; 
+    background: #f9e933; 
 }
 
 footer {
