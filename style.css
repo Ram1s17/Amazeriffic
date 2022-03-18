@@ -70,6 +70,20 @@ main .main .main-text h3{
     font-size: 110%;
 }
 
+main .tabs a span { 
+    display: inline-block; 
+    border-radius: 5px 5px 0 0;
+    width: 100px;
+    margin-right: 10px; 
+    text-align: center; 
+    background: #ddd; 
+    padding: 5px; 
+}
+
+main .tabs a span.active { 
+    background: #eee; 
+}
+
 footer {
     background-color: #e0e0e0;
     display: flex;
