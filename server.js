@@ -18,6 +18,10 @@ app.get('', (req, res) => {
 	res.render('index.ejs')
 })
 
+app.get('/app', (req, res) => {
+	res.render('flickr.ejs')
+})
+
 app.get('/todos.json', (req, res) => {
 	res.sendFile(__dirname + '/todos.json')
 })

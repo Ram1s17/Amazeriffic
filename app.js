@@ -77,25 +77,22 @@ var main = function (toDoObjects) {
 				});
 			} 
 	        else if ($element.parent().is(":nth-child(4)")) { 
-		        /*$(".content").append(
-		            '<input type="text" class="inp">'+
-			        '<button class="btn">Добавить</button>'
-		        );
-	            var newToDo;
-		        $('.btn').on('click',function(){
-		            newToDo= $('.inp').val();
-		            if (newToDo!='') {
-		                toDos.push( newToDo);
-			            alert('Новое задание "'+newToDo+'" успешно добавлено!');
-			            $('.inp').val("");
-		            }
-	            })*/
-
 				var $input = $("<input>").addClass("description"), 
 					$inputLabel = $("<p>").text("Новая задача: "),
 					$tagInput = $("<input>").addClass("tags"),
 					$tagLabel = $("<p>").text("Тэги: "),
 					$button = $("<button>").text("+");
+				$input.keydown(function(e) {
+					if(e.keyCode === 13) {
+						console.log("egor")
+						$button.click();
+					}
+				});
+				$tagInput.keydown(function(e) {
+					if(e.keyCode === 13) {
+						$button.click();
+					}
+				});
 				$button.on("click", function () {
 					var description = $input.val(),
 					// разделение в соответствии с запятыми
