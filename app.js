@@ -1,4 +1,4 @@
-var main = function () { 
+var main = function (toDoObjects) { 
     "use strict";
 
     var toDos = [
@@ -50,5 +50,9 @@ var main = function () {
     })
     $(".tabs a:first-child span").trigger("click");
 };
-
-main();
+$(document).ready(function () { 
+	$.getJSON("todos.json", function (toDoObjects) { 
+		// вызов функции main с аргументом в виде объекта toDoObjects 
+		main(toDoObjects); 
+	}); 
+});
