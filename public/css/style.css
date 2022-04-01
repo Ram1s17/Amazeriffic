@@ -59,6 +59,12 @@ main .container .content .btn{
     background: red;
 }
 
+main .container .content h3 {
+    font-family: cursive;
+    font-size: 150%;
+    font-style: bold;
+}
+
 footer {
     background-color: #e0e0e0;
     display: flex;
