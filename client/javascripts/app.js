@@ -93,17 +93,23 @@ var main = function (toDoObjects) {
 						$button.click();
 					}
 				});
-				$button.on("click", function () {
-					var description = $input.val(),
-					// разделение в соответствии с запятыми
-					tags = $tagInput.val().split(","); 
-					toDoObjects.push({"description":description, "tags":tags}); 
-					// обновление toDos
-					toDos = toDoObjects.map(function (toDo) {
-						return toDo.description;
-					});
-					$input.val("");
-					$tagInput.val("");
+				$button.on("click", function () { 
+					var description = $input.val(), 
+					tags = $tagInput.val().split(","), 
+					// создаем новый элемент списка задач 
+					newToDo = {"description":description, "tags":tags}; 
+					$.post("todos", newToDo, function (result) { 
+						console.log(result); 
+						// нужно отправить новый объект на клиент 
+						// после получения ответа сервера 
+						toDoObjects.push(newToDo); 
+						// обновляем toDos 
+						toDos = toDoObjects.map(function (toDo) {
+							 return toDo.description; 
+						}); 
+						$input.val(""); 
+						$tagInput.val(""); 
+					}); 
 				});
 				$("main .content").append($inputLabel).append($input).append($tagLabel).append($tagInput).append($button);
 	        }

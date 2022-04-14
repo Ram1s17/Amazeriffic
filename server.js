@@ -1,29 +1,50 @@
-const express = require('express')
-const app = express()
-const port = 5000
+var express = require("express"),
+	http = require("http"),
+	app = express(),
+	toDos = [
+		{
+		"description" : "Купить продукты",
+		"tags" : [ "шопинг", "рутина" ]
+		},
+		{
+		"description" : "Сделать несколько новых задач",
+		"tags" : [ "писательство", "работа" ]
+		},
+		{
+		"description" : "Подготовиться к лекции в понедельник",
+		"tags" : [ "работа", "преподавание" ]
+		},
+		{
+		"description" : "Ответить на электронные письма",
+		"tags" : [ "работа" ]
+		},
+		{
+		"description" : "Вывести Грейси на прогулку в парк",
+		"tags" : [ "рутина", "питомцы" ]
+		},
+		{
+		"description" : "Закончить писать книгу",
+		"tags" : [ "писательство", "работа" ]
+		}
+	];
 
+app.use(express.static(__dirname + "/client"));
+http.createServer(app).listen(3000);
 
-app.use(express.static('public'))
-app.use('/css', express.static(__dirname + 'public/css'))
-app.use('/img', express.static(__dirname + 'public/img'))
-app.use(express.static(__dirname))
-app.use(express.json())
+// этот маршрут замещает наш файл
+// todos.json в примере из части 5
+app.get("/todos.json", function (req, res) {
+	res.json(toDos);
+});
 
-
-
-app.set('views', './views')
-app.set('view engine', 'ejs')
-
-app.get('', (req, res) => {
-	res.render('index.ejs')
-})
-
-app.get('/app', (req, res) => {
-	res.render('flickr.ejs')
-})
-
-app.get('/todos.json', (req, res) => {
-	res.sendFile(__dirname + '/todos.json')
-})
-
-app.listen(port, () => console.info(`Запуск сервера -> ${port}`))
+// командуем Express принять поступающие
+// объекты JSON
+app.use(express.urlencoded({ extended: true}));
+app.post("/todos", function (req, res) {
+	// сейчас объект сохраняется в req.body
+	var newToDo = req.body;
+	console.log(newToDo);
+	toDos.push(newToDo);
+	// отправляем простой объект
+	res.json({"message":"Вы размещаетесь на сервере!"});
+}); 
