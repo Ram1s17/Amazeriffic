@@ -113,7 +113,7 @@ var main = function (toDoObjects) {
     $(".tabs a:first-child span").trigger("click");
 };
 $(document).ready(function () { 
-	$.getJSON("todos.json", function (toDoObjects) { 
+	$.getJSON("../todos.json", function (toDoObjects) { 
 		// вызов функции main с аргументом в виде объекта toDoObjects 
 		main(toDoObjects); 
 	}); 
