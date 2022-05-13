@@ -3,97 +3,46 @@ var express = require("express"),
 	// импортируем библиотеку mongoose
 	mongoose = require("mongoose"),
 	app = express(),
-	toDos = [
-		{
-		"description" : "Купить продукты",
-		"tags" : [ "шопинг", "рутина" ]
-		},
-		{
-		"description" : "Сделать несколько новых задач",
-		"tags" : [ "писательство", "работа" ]
-		},
-		{
-		"description" : "Подготовиться к лекции в понедельник",
-		"tags" : [ "работа", "преподавание" ]
-		},
-		{
-		"description" : "Ответить на электронные письма",
-		"tags" : [ "работа" ]
-		},
-		{
-		"description" : "Вывести Грейси на прогулку в парк",
-		"tags" : [ "рутина", "питомцы" ]
-		},
-		{
-		"description" : "Закончить писать книгу",
-		"tags" : [ "писательство", "работа" ]
-		}
-	];
+	toDosController = require("./controllers/todos_controller.js"),
+	UsersController = require("./controllers/users_controller.js");
 
-app.use(express.static(__dirname + "/client"));
+app.use('/', express.static(__dirname + "/client"));
+// app.use('/users/:username', express.static(__dirname + "/client"));
 
 // командуем Express принять поступающие
 // объекты JSON
 app.use(express.urlencoded({ extended: true}));
+
 // подключаемся к хранилищу данных Amazeriffic в Mongo
-mongoose.connect('mongodb://localhost/amazeriffic', {
-		useNewUrlParser: true,
-		useCreateIndex: true,
-		useUnifiedTopology: true 
+mongoose.connect('mongodb://localhost/amazeriffic',{
+				useNewUrlParser: true,
+				useCreateIndex: true,
+				useUnifiedTopology: true
 }).then(res => {
-	console.log("DB Connected!")
+	console.log("DB connected");
 }).catch(err => {
-	console.log(Error, err.message);
+	console.log("ERROR" + err);
 });
 
-// Это модель Mongoose для задач
-var ToDoSchema = mongoose.Schema({
-	description: String,
-	tags: [ String ]
-});
-
-var ToDo = mongoose.model("ToDo", ToDoSchema);
 // начинаем слушать запросы
 http.createServer(app).listen(3000);
 
 
-// этот маршрут замещает наш файл
-// todos.json в примере из части 5
-app.get("/todos.json", function (req, res) {
-	ToDo.find({}, function (err, toDos) {
-		if (err !== null) {
-			console.log("ERROR" + err);
-		}
-		else {
-			res.json(toDos);
-		}
-	});
-});
+app.get("/todos.json", toDosController.index);
+app.get("/todos/:id", toDosController.show); 
+app.post("/todos", toDosController.createTaskForUser);
+app.put("/todos/:id", toDosController.update);
+app.delete("/todos/:id", toDosController.destroy);
 
-app.post("/todos", function (req, res) {
-	console.log(req.body);
+app.get("/users.json", UsersController.index);
+app.get("/user/:username", UsersController.search);
+app.get("/userID/:id", UsersController.searchById);
+app.get("/users/:username", UsersController.show);
+app.post("/users", UsersController.create);
+app.put("/users/:username", UsersController.update);
+app.delete("/users/:id", UsersController.destroy);
 
-	var newToDo = new ToDo({
-		"description":req.body.description,
-		"tags":req.body.tags
-	});
-
-	newToDo.save(function (err, result) {
-		if (err !== null) {
-			console.log(err);
-			res.send("ERROR");
-		} else {
-			// клиент ожидает, что будут возвращены все задачи,
-			// поэтому для сохранения совместимости сделаем дополнительный запрос
-			ToDo.find({}, function (err, result) {
-				if (err !== null) {
-					// элемент не был сохранен
-					res.send("ERROR");
-				}
-				else {
-					res.json(result);
-				}
-			});
-		}
-	});
-}); 
+app.get("/users/:username/todos.json", toDosController.index);
+app.post("/users/:username/todos", toDosController.create);
+app.put("/users/:username/todos/:id", toDosController.update);
+app.delete("/users/:username/todos/:id", toDosController.destroy);

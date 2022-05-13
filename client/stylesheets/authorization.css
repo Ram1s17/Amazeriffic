@@ -1,0 +1,75 @@
+html, body {
+    height: 100%;
+    margin: 5px;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+    background: #008AA4;
+}
+
+.autho-box {
+    width: 306px;
+    height: 235px;
+    padding: 15px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: #191919;
+    text-align: center;
+    border-radius: 37px;
+}
+
+.autho-box h1 {
+    color: white;
+    text-transform: uppercase;
+    font-weight: 300;
+    font-size: 250%;
+    margin-top: 5px;
+    margin-bottom: 25px;
+}
+
+.autho-box input[type="text"] {
+    background: none;
+    display: block;
+    margin: 10px auto;
+    text-align: center;
+    border: 3px solid #008AA4;
+    font-size: 125%;
+    padding: 10px 10px;
+    width: 200px;
+    outline: none;
+    color: white;
+    border-radius: 24px;
+    transition: 0.25s;
+}
+
+.autho-box input[type="text"]:focus {
+    width: 280px;
+    border-color: #FC8B2A;
+}
+
+.autho-box input::-webkit-input-placeholder { 
+    color: white; 
+}
+
+#autho-button {
+    background: none;
+    display: block;
+    margin: 15px auto;
+    text-align: center;
+    font-size: 125%;
+    border: 3px solid #FC8B2A;
+    padding: 14px 38px;
+    outline: none;
+    color: white;
+    border-radius: 24px;
+    cursor: pointer;
+}
+
+#autho-button:hover {
+    background-color: #FC8B2A;
+}

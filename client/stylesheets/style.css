@@ -1,17 +1,24 @@
 body {
     background: #f9e933;
 }
+
 header {
+    text-align: center;
+    background-color: red;
+    padding: 10px;
+}
+
+header .container {
     display: flex;
-    align-items: center;
     justify-content: space-between;
-    justify-items: stretch;
-    align-content: center;
-    background: red;
+    align-items: center;
 }
 
 header a {
+    flex-basis: 70%;
     color: black;
+    margin-right: 5px;
+    font-size: 110%;
 }
 
 header h1 {
@@ -22,8 +29,7 @@ header h1 {
 }
 
 header nav {
-    position: absolute;
-    right: 35px;
+    flex-basis: 30%;
 }
 
 main {
@@ -47,6 +53,15 @@ main .tabs a span {
 
 main .tabs a span.active { 
     background: #f9e933; 
+}
+
+main .container .content li {
+    margin: 10px 0px;
+    font-size: 110%;
+}
+
+main .container .content li a {
+    margin-left: 10px;
 }
 
 main .container .content .inp{
@@ -91,4 +106,36 @@ footer .sitemap {
 footer .sitemap ul {
     list-style: none;
     columns: 2;
+}
+
+.input-task {
+	border-radius: 10px;
+	height: 5%;
+	width: 25%;
+	margin: 1%;
+}
+
+.input-tag {
+	border-radius: 10px;
+	height: 5%;
+	width: 25%;
+	margin: 1%;
+}
+
+.add-task-btn {
+	border-radius: 10px;
+	color: black;
+	padding: 5px 25px;
+    margin-left: 125px;
+	text-align: center;
+	text-decoration: none;
+	display: inline-block;
+	font-size: 14px;
+}
+
+.input-name {
+	border-radius: 10px;
+	height: 5%;
+	width: 35%;
+	margin: 1%;
 }
